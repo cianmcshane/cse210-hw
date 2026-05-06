@@ -19,8 +19,8 @@ class Program
         Resume cmmyResume = new Resume();
         cmmyResume._cmname = "Allison Rose";
 
-        cmmyResume._cmjobs.Add(job1);
-        cmmyResume._cmjobs.Add(job2);
+        cmmyResume._cmjobs.Add(cmjob1);
+        cmmyResume._cmjobs.Add(cmjob2);
 
         cmmyResume.Display();
     }
