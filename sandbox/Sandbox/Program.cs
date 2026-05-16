@@ -23,4 +23,5 @@ static void readJoke()
 }
 
 writeJoke();
+
 readJoke();
