@@ -6,7 +6,7 @@ public class Journal
 {
     public List<string> cmEntries = new List<string>();
 
-    // Add a new journal entry
+    
     public void _cmaddEntry()
     {
         string cmEntry = Entry._cmNewEntry(Prompter._cmPrompt());
@@ -15,7 +15,7 @@ public class Journal
         Console.WriteLine("\nEntry saved!\n");
     }
 
-    // Display all entries
+    
     public void _cmdisplay()
     {
     foreach (string cmEntry in cmEntries)
@@ -24,7 +24,7 @@ public class Journal
 
         if (parts.Length < 3)
         {
-            continue; // skip broken lines safely
+            continue;
         }
 
         string cmDate = parts[0];
