@@ -51,7 +51,7 @@ class Program
                 return;
             }
 
-            cmScripture.HideRandomWords(3);
+            cmScripture.HideRandomWords(1);
         }
 
         Console.Clear();
