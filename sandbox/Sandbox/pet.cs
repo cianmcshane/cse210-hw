@@ -15,8 +15,8 @@ public class Pet
 
     public void Display()
     {
-        Console.WriteLine($"Name: {_name}, Species{_species}, Age{_age}, Owner: {_owner}");
+        Console.WriteLine($"Name: {_name}, Species {_species}, Age {_age}, Owner: {_owner}");
     }
 
-    
+
 }
