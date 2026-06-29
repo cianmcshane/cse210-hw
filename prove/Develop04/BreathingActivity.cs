@@ -16,7 +16,6 @@ class BreathingActivity : Activity
             Console.WriteLine("Breath in...");
             for (int i = 3; i >= 1; i--)
             {
-                Console.Clear();
                 Console.Write(i);
                 Thread.Sleep(1000);
                 Console.Write("\b \b");

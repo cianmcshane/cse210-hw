@@ -20,25 +20,19 @@ class Activity
     
     public void Spinner()
     {
-            for (int i = 0; i < 3; i++)
-            {Console.Write("E");
+        string[] spinner = { "|", "/", "-", "\\" };
 
-            Thread.Sleep(500);
+        DateTime end = DateTime.Now.AddSeconds(3);
 
-            Console.Write("\b \b");
-            Console.Write("M");
-
-            Thread.Sleep(500);
-
-            Console.Write("\b \b");
-            Console.Write("3");
-            Thread.Sleep(500);
-
-            Console.Write("\b \b");
-            Console.Write("W");}
-            Console.Write("\b \b");
-            Console.Write("      ");
-
+        while (DateTime.Now < end)
+        {
+            foreach (string s in spinner)
+            {
+                Console.Write(s);
+                Thread.Sleep(200);
+                Console.Write("\b");
+            }
+        }
     }
 
     public void Start()

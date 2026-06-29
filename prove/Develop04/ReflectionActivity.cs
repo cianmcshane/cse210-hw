@@ -46,13 +46,10 @@ class ReflectionActivity : Activity
 
         DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
 
-        while (DateTime.Now < endTime)
-        {
-            Console.WriteLine();
-            Console.Write("> " + _questions[rand.Next(_questions.Count)]);
+        Console.WriteLine();
+        Console.Write("> " + _questions[rand.Next(_questions.Count)]);
 
-            Spinner();
-            Console.WriteLine();
-        }
+        Spinner();
+        Console.WriteLine();
     }
 }
