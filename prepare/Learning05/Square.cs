@@ -14,9 +14,3 @@ class Square : Shape
 }
 
 
-// Organism o1 = new Organism()
-// Organism o1 = new Mammal();
-// Organism o3 = new Whale();
-// Mammal o4 = new Mammal();
-// Mammal o5 = new Whale();
-// Whale 06 = new Whale();
