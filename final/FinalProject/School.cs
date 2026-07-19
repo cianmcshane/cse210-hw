@@ -15,6 +15,6 @@ class School : Building
 
         public override void DisplayInfo()
     {
-        
+        Console.WriteLine($"School - Education+ {_cmEducationBoost}, Maintenance: {_cmMaintenance}");
     }
 }
