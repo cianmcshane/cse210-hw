@@ -7,9 +7,10 @@ class School : Building
         _cmEducationBoost = educationBoost;
     }
 
-    public override void Impact()
+    public override void Impact(City city)
     {
-        
+        city.UpdateEducation(_cmEducationBoost);
+        city.UpdateTotalMaintenance(_cmMaintenance);
     }
 
         public override void DisplayInfo()

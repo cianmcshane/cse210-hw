@@ -7,11 +7,11 @@ class Game
     {
         _cmIsRunning = true;
 
-        City _cmCity = new City(1000,10000,10,10);
+        _cmCity = new City(5000, 1000, 50, 10);
+
         while (_cmIsRunning == true)
         {
             DisplayMenu();
-            _cmCity.UpdateCityStats();
         }
     }
 
@@ -24,9 +24,10 @@ class Game
         Console.WriteLine("=================================");
         Console.WriteLine("1. Build a Building");
         Console.WriteLine("2. View City");
-        Console.WriteLine("3. Save Game");
-        Console.WriteLine("4. Load Game");
-        Console.WriteLine("5. Quit");
+        Console.WriteLine("3. End Turn");
+        Console.WriteLine("4. Save Game");
+        Console.WriteLine("5. Load Game");
+        Console.WriteLine("6. Quit");
         Console.WriteLine();
 
         Console.Write("Choose an option: ");
@@ -42,25 +43,43 @@ class Game
         }        
         else if (cmChoice == "3")
         {
-            SaveManger save = new SaveManger();
+            _cmCity.EndTurn();
 
-            Console.WriteLine("Enter a file name: ");
-            string cmSaveFile = Console.ReadLine();
-
-            save.SaveGame();
+            Console.WriteLine("A new turn has begun!");
+            Console.ReadLine();
         }
         else if (cmChoice == "4")
         {
-            SaveManger load = new SaveManger();
+            SaveManager save = new SaveManager();
 
-            Console.WriteLine("Enter a file name: ");
-            string cmLoadFile = Console.ReadLine();
+            Console.Write("Enter a file name: ");
+            string cmSaveFile = Console.ReadLine();
 
-            load.LoadGame();
+            save.SaveGame(cmSaveFile, _cmCity);
+
+            Console.WriteLine("Game saved!");
+            Console.ReadLine();
         }
         else if (cmChoice == "5")
         {
+            SaveManager load = new SaveManager();
+
+            Console.Write("Enter a file name: ");
+            string cmLoadFile = Console.ReadLine();
+
+            _cmCity = load.LoadGame(cmLoadFile);
+
+            Console.WriteLine("Game loaded!");
+            Console.ReadLine();
+        }
+        else if (cmChoice == "6")
+        {
             _cmIsRunning = false;
+        }
+        else
+        {
+            Console.WriteLine("Invalid option.");
+            Console.ReadLine();
         }
     }
 
@@ -81,19 +100,19 @@ class Game
 
         if (choice == "1")
         {
-            // building = new Housing();
+            building = new Housing("Housing", 500, 0, 100);
         }
         else if (choice == "2")
         {
-            // building = new Park();
+            building = new Park("Park", 300, 25, 10);
         }
         else if (choice == "3")
         {
-            // building = new School();
+            building = new School("School", 1000, 100, 5);
         }
         else if (choice == "4")
         {
-            // building = new Factory();
+            building = new Factory("Factory", 2000, 200);
         }
         else
         {
@@ -118,6 +137,12 @@ class Game
 
     public void ViewCity()
     {
-        
+        Console.Clear();
+
+        _cmCity.ViewCity();
+
+        Console.WriteLine();
+        Console.WriteLine("Press Enter to continue...");
+        Console.ReadLine();
     }
 }

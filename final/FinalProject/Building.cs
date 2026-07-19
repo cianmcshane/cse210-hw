@@ -2,7 +2,7 @@ abstract class Building
 {
     private string _cmType;
     private int _cmCost;
-    private int _cmMaintenance;
+    protected int _cmMaintenance;
 
     public Building(string type, int cost, int maintenance)
     {
@@ -21,7 +21,7 @@ abstract class Building
         return _cmCost;
     }
 
-    public abstract void Impact();
+    public abstract void Impact(City city);
 
     public abstract void DisplayInfo();
 }

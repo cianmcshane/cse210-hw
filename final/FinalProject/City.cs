@@ -1,6 +1,8 @@
 class City
 {
     private int _cmBudget;
+    private int _cmTotalMaintenance;
+    private int _cmFactoryCount;
     private int _cmPopulation;
     private int _cmHappiness;
     private int _cmEducation;
@@ -9,11 +11,34 @@ class City
     public City(int budget, int population, int happiness, int education)
     {
         _cmBudget = budget;
+        _cmTotalMaintenance = 0;
+        _cmFactoryCount = 0;
         _cmPopulation = population;
         _cmHappiness = happiness;
         _cmEducation = education;
         _cmBuildings = new List<Building>();
     }
+
+    public int GetBudget()
+    {
+        return _cmBudget;
+    }
+
+    public int GetPopulation()
+    {
+        return _cmPopulation;
+    }
+
+    public int GetHappiness()
+    {
+        return _cmHappiness;
+    }
+
+    public int GetEducation()
+    {
+        return _cmEducation;
+    }
+
 
     public bool AddBuilding(Building building)
     {
@@ -21,41 +46,36 @@ class City
         {
             _cmBudget -= building.GetCost();
             _cmBuildings.Add(building);
+
+            building.Impact(this);
+
             return true;
         }
 
         return false;
     }
 
-    public void UpdateCityStats()
+    public void EndTurn()
     {
-        int cmFactoryCount = 0;
-        int cmTotalMaintenance = 0;
-
-        foreach (Building building in _cmBuildings)
-        {
-            cmTotalMaintenance += building.GetMaintenance();
-
-            if (building is Factory)
-            {
-                cmFactoryCount++;
-            }
-        }
-
-        double income = (_cmPopulation * 100)
-                    + (cmFactoryCount * 500)
+        double cmIncome = (_cmPopulation * 2)
+                    + (_cmFactoryCount * 500)
                     + (_cmHappiness * 5);
 
-        double educationMultiplier = Math.Pow(1.01, _cmEducation / 10.0);
+        double cmEducationMultiplier = Math.Pow(1.01, _cmEducation / 10.0);
 
-        income *= educationMultiplier;
+        cmIncome = cmIncome * cmEducationMultiplier;
 
-        _cmBudget += (int)income - cmTotalMaintenance;
+        _cmBudget += (int)cmIncome - _cmTotalMaintenance;
     }
 
-    public void UpdateBudget(int increase)
+    public void UpdateTotalMaintenance(int increase)
     {
-        
+        _cmTotalMaintenance = _cmTotalMaintenance + increase;
+    }
+
+    public void UpdateFactoryCount(int increase)
+    {
+        _cmFactoryCount = _cmFactoryCount + increase;
     }
 
     public void UpdatePopulation(int increase)
